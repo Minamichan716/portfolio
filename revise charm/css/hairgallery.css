@@ -1,0 +1,465 @@
+@charset "UTF-8";
+/* CSS Document */
+/* 基本設定 base
+=========================*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 1rem;
+}
+
+body {
+	line-height: 1.5;
+	color: #333;
+	font-family: 'Noto Sans JP', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0;
+}
+
+ul,ol {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+}
+
+/* 共通設定
+=========================*/
+.wrapper {
+	margin:0 6%;
+	margin: 0 calc(6% - 40px);
+}
+/*ロゴとホットペッパー配置*/
+
+.header1 {
+	margin-bottom: 50px;
+}
+
+/*ロゴ*/
+.header1 h1 img {
+	display: block;
+	margin: 0 auto;
+}
+
+h1 {
+	padding-top: 50px;
+}
+
+.hotPeper {
+	margin-top: 45px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	right: 0.6%;
+	top: 10px;
+}
+
+h1 img {
+	height: 74px;
+	width: 200px;
+}
+
+.hotPeper li img {
+	display: block;
+	width: 200px;
+	height: 50px;
+}
+
+.reserve {
+	font-size: 0.8rem;
+}
+
+.tel{
+	font-size: 1.2rem;
+}
+
+/*グローバルメニュー*/
+.header2 ul {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 30px;
+}
+
+.header2 ul li {
+	padding: 0 30px;
+	font-size: 1rem;
+}
+
+/*ホバーした時日本語*/
+.gnavi{
+    display: flex;
+    flex-wrap: wrap;/*スマホ表示折り返し用なのでPCのみなら不要*/
+    list-style: none;
+}
+
+.gnavi li a{
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.gnavi li{
+    margin-bottom:20px;
+}
+
+/*==================================================
+　5-3-9 テキストが入れ替わる
+===================================*/
+
+
+.gnavi li a{
+    /*テキストの基点とするためrelativeを指定*/
+  position: relative;
+    /*はみ出る要素を隠す*/
+  overflow: hidden;
+  padding:10px 60px;
+}
+
+.gnavi li span{
+    /*絶対配置でテキストの位置を決める*/
+  position: absolute;
+  left: 50%;
+  top:0;
+    /*アニメーションの指定*/
+  transition: all .5s;
+  transform: translate(-50%, 0);/*X方向に-50% ※中央寄せにするため*/
+  /*ブロック要素にして透過なし、テキスト折り返しなし*/  
+  display: block;
+  opacity:1;
+  white-space: nowrap;
+}
+
+/*差し替わるテキストの設定*/
+.gnavi li span:nth-child(2){
+  opacity:0;/*透過0に*/
+    transform: translate(-50%,100%);/*X方向に-50% Y方向に100%*/
+}
+
+/*hoverするとテキストが入れ替わる設定*/
+.gnavi li:hover span:nth-child(1){
+  opacity:0;/*透過0に*/
+    transform: translate(-50%,-100%);/*X方向に-50% Y方向に-100%*/
+}
+
+.gnavi li:hover span:nth-child(2){
+  opacity:1;/*不透明に*/
+  transform: translate(-50%, 0);/*X方向に-50% Y方向に0*/
+}
+
+/*========= レイアウトのためのCSS ===============*/
+ul{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  color: #fff;
+}
+
+a:hover,
+a:active{
+  text-decoration: none;
+}
+/*========= main
+===============*/
+.firstView {
+	position: relative;
+}
+
+.firstView h2{
+	font-family: 'Roboto', sans-serif;
+	font-size: 3rem;
+	color: #fff;
+	position: absolute;
+	right: 5%;
+	top: 40%;
+}
+
+.firstView img{
+	width: 100%;
+	height: auto;
+}
+
+/*HAIRGALLERY*/
+.gridContainer {
+	padding: 100px 0px;
+}
+
+.gallery {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(3,1fr);
+	grid-row-gap: 90px;
+}
+
+.gallery p{
+	text-align: center;
+}
+
+.gallery span {
+
+	display: block;
+	text-align: center;
+}
+
+/*========= footer
+===============*/
+
+#page_top {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+}
+#page_top a {
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px;
+}
+#page_top a:hover {
+    background-color: #666;
+    text-decoration: none;
+}
+
+
+
+footer p {
+	text-align: center;
+	font-size: 0.8rem;
+	line-height: 16px;
+}
+
+footer p:nth-child(2){
+	padding-top: 30px;
+}
+
+footer p:nth-child(4){
+	padding-bottom: 10px;
+}
+
+.sns {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+.sns img{
+	height: 50px;
+	width: 50px;
+}
+
+.sns li{
+	padding-top: 30px;
+	padding: 0 25px;
+}
+
+.copy{
+	padding:20px 0;
+}
+
+.teltel {
+	font-size: 1.5rem;
+	line-height: 1.2rem;
+	padding: 20px;
+}
+
+.telLink a{
+	display: block;
+	padding-left: 10px;
+}
+
+.telLink {
+	color: #000;
+}
+
+.teltel span {
+	font-size: 1rem;
+}
+
+.telLink a:hover {
+	cursor: pointer;
+}
+	
+footer {
+	background:#bcd3dc;
+}
+
+@media(max-width:960px) {
+	
+.wrapper {
+	margin:0 3%
+}
+
+br {
+	display: none;
+}
+	
+		.firstView h2{
+	font-size: 2rem;
+}
+	
+
+/*	ハンバーガーメニュー*/
+.gnavi {
+	margin-top: 10%;
+}
+.header2 ul {
+	flex-direction: column;
+}
+
+.gnavi li a:hover {
+	color: #fff;
+}
+
+#g-nav{
+/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+position:fixed;
+z-index: 999;
+/*ナビのスタート位置と形状*/
+top:0;
+right: -120%;
+width:100%;
+height: 100vh;/*ナビの高さ*/
+background:rgba(176,191,176,.9);
+/*動き*/
+transition: all 0.6s;
+}
+
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+    right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+.gnav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+	.hotPeper {
+		align-items: flex-start;
+		left: 0;
+	}
+	
+	.reserve,
+	.tel{
+		display: none;
+		
+	}
+/*リストのレイアウト設定*/
+#g-nav li{
+  list-style: none;
+    text-align: center;
+}
+
+#g-nav li a{
+  color: #fff;
+  text-decoration: none;
+  padding:50px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+	
+.gnavi li span{
+	font-size: 21px;
+	border-bottom: #fff solid 2px;
+	}	
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+  position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+  top:10px;
+  right: 10px;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+  
+/*×に変化*/  
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 10%;
+    height: 3%;
+    border-radius: 2px;
+  background-color: #666;
+    width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 60%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 60%;
+}
+	.gridContainer {
+		padding: 30px 43px;
+	}
+
+}
+
+@media(max-width:530px) {
+	.firstView h2{
+	font-size: 1rem;
+}
+	
+	.gallery {
+		justify-content: center;
+		grid-template-columns: repeat(2, 150px);
+		grid-row-gap: 50px;
+		grid-column-gap: 10px;
+	}
+	
+	.gallery span {
+		font-size: 0.8rem;
+	}
+}
