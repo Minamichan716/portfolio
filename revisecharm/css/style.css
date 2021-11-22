@@ -1,0 +1,627 @@
+@charset "UTF-8";
+/* CSS Document */
+/* 基本設定 base
+=========================*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 1rem;
+}
+
+body {
+	line-height: 1.5;
+	color: #333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0;
+}
+
+ul,ol {
+	list-style: none;
+}
+table {
+	border-collapse: collapse;
+}
+
+/* 共通設定
+=========================*/
+
+.wrapper {
+	margin:0 6%;
+	margin: 0 calc(6% - 40px);
+}
+
+
+h2 {
+	padding-top: 100px;
+	padding-bottom: 50px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	opacity: 0.8;
+	font-size: 5rem;
+	color: #9A8F36;	
+}
+
+
+/*ロゴとホットペッパー配置*/
+
+.header1 {
+	margin-bottom: 50px;
+}
+
+/*ロゴ*/
+.header1 h1 img {
+	display: block;
+	margin: 0 auto;
+}
+
+h1 {
+	padding-top: 50px;
+}
+
+.hotPeper {
+	margin-top: 45px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	right: 0.6%;
+	top: 10px;
+}
+
+h1 img {
+	height: 74px;
+	width: 200px;
+}
+
+.hotPeper li img {
+	display: block;
+	width: 200px;
+	height: 50px;
+}
+
+.reserve {
+	font-size: 0.8rem;
+}
+
+.tel{
+	font-size: 1.2rem;
+}
+
+/*グローバルメニュー*/
+.header2 ul {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 30px;
+}
+
+.header2 ul li {
+	padding: 0 30px;
+	font-size: 1rem;
+}
+
+/*ホバーした時日本語*/
+.gnavi{
+    display: flex;
+    flex-wrap: wrap;/*スマホ表示折り返し用なのでPCのみなら不要*/
+    list-style: none;
+}
+
+.gnavi li a{
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.gnavi li{
+    margin-bottom:20px;
+}
+
+#home {
+	display: none;
+}
+
+/*==================================================
+　5-3-9 テキストが入れ替わる
+===================================*/
+
+
+.gnavi li a{
+    /*テキストの基点とするためrelativeを指定*/
+  position: relative;
+    /*はみ出る要素を隠す*/
+  overflow: hidden;
+  padding:10px 60px;
+}
+
+.gnavi li span{
+    /*絶対配置でテキストの位置を決める*/
+  position: absolute;
+  left: 50%;
+  top:0;
+    /*アニメーションの指定*/
+  transition: all .5s;
+  transform: translate(-50%, 0);/*X方向に-50% ※中央寄せにするため*/
+  /*ブロック要素にして透過なし、テキスト折り返しなし*/  
+  display: block;
+  opacity:1;
+  white-space: nowrap;
+}
+
+/*差し替わるテキストの設定*/
+.gnavi li span:nth-child(2){
+  opacity:0;/*透過0に*/
+    transform: translate(-50%,100%);/*X方向に-50% Y方向に100%*/
+}
+
+/*hoverするとテキストが入れ替わる設定*/
+.gnavi li:hover span:nth-child(1){
+  opacity:0;/*透過0に*/
+    transform: translate(-50%,-100%);/*X方向に-50% Y方向に-100%*/
+}
+
+.gnavi li:hover span:nth-child(2){
+  opacity:1;/*不透明に*/
+  transform: translate(-50%, 0);/*X方向に-50% Y方向に0*/
+}
+/*========= レイアウトのためのCSS ===============*/
+
+/*スライドショー*/
+/*==================================================
+スライダーのためのcss
+===================================*/
+.slider {
+    position:relative;
+  z-index: 1;
+  /*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+  height: 700px;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+/*　背景画像設定　*/
+
+.slider-item01 {
+   background: url(../image/slider1.jpg);
+}
+
+.slider-item02 {
+	background: url(../image/slider2.jpg);
+}
+
+.slider-item03 {
+	background: url(../image/slider3.jpg);
+}
+
+.slider {
+	position: relative;
+}
+.line{
+	padding-left: 1.2%;
+	font-size: 2rem;
+	color: #fff;
+	font-family: 'Noto Sans JP', sans-serif;
+	position: absolute;
+	top: 50%;
+
+}
+
+.slider-item {
+    width: 100%;/*各スライダー全体の横幅を画面の高さいっぱい（100%）にする*/
+    height:700px;/*各スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+    background-repeat: no-repeat;/*背景画像をリピートしない*/
+    background-position: center;/*背景画像の位置を中央に*/
+    background-size: cover;/*背景画像が.slider-item全体を覆い表示*/
+}
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev, 
+.slick-next {
+    position: absolute;/*絶対配置にする*/
+  z-index: 3;
+    top: 42%;
+    cursor: pointer;/*マウスカーソルを指マークに*/
+    outline: none;/*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #ccc;/*矢印の色*/
+    border-right: 2px solid #ccc;/*矢印の色*/
+    height: 25px;
+    width: 25px;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+    left:2.5%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+    right:2.5%;
+    transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+  position: relative;
+  z-index: 3;
+    text-align:center;
+  margin:-50px 0 0 0;
+}
+
+.slick-dots li {
+    display:inline-block;
+  margin:0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width:8px;/*ドットボタンのサイズ*/
+    height:8px;/*ドットボタンのサイズ*/
+    display:block;
+    border-radius:50%;
+    background:#ccc;/*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button{
+    background:#333;/*ドットボタンの現在地表示の色*/
+}
+
+/*========= レイアウトのためのCSS ===============*/
+ul{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  color: #fff;
+}
+
+a:hover,
+a:active{
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+/* サービス　
+=========================*/
+
+p {
+	line-height : 3rem;
+}
+.post {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 200px;
+}
+
+.post:nth-child(3){
+	flex-direction: row-reverse;
+}
+
+.post:nth-child(4){
+	margin-bottom: 100px;
+}
+
+.detail{
+	flex: 1;
+	margin: 0px 40px;
+}
+
+.photo {
+	flex: 1;
+	margin: 0px 40px;
+}
+
+/*ニュース*/
+.event {
+	display: flex;
+	justify-content: flex-start;
+	gap:100px;
+	padding-bottom: 40px;
+}
+
+/* バナー　
+=========================*/
+
+.bannerList {
+	display: flex;
+	justify-content: center;
+	/*padding: 150px 0;*/
+	margin-top: 60px;
+	margin-bottom: 127px;
+}
+
+.bannerList li {
+	padding: 0px 15px;
+}
+
+.bannerList img{
+	width: 200px;
+}
+
+
+/*フッター*/
+
+/*ページトップボタン*/
+
+#page_top {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+}
+#page_top a {
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px;
+}
+#page_top a:hover {
+    background-color: #666;
+    text-decoration: none;
+}
+
+
+
+footer p {
+	text-align: center;
+	font-size: 0.8rem;
+	line-height: 16px;
+}
+
+footer p:nth-child(2){
+	padding-top: 30px;
+}
+
+footer p:nth-child(4){
+	padding-bottom: 10px;
+}
+
+.sns {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+.sns img{
+	height: 50px;
+	width: 50px;
+}
+
+.sns li{
+	padding-top: 30px;
+	padding: 0 25px;
+}
+
+.copy{
+	padding:20px 0;
+}
+
+.teltel {
+	font-size: 1.5rem;
+	line-height: 1.2rem;
+	padding: 20px;
+}
+
+.teltel span {
+	font-size: 1rem;
+}
+	
+footer {
+	background:#bcd3dc;
+}
+
+/*レスポンシブデザイン*/
+
+@media(max-width:960px) {
+	
+.wrapper {
+	margin:0 3%
+}
+	
+/*	ハンバーガーメニュー*/
+	.gnavi {
+		margin-top: 10%;
+	}
+	.header2 ul {
+		flex-direction: column;
+	}
+	
+	.gnavi li a:hover {
+		color: #fff;
+	}
+	#home {
+	display: block;
+	}
+	#g-nav{
+	/*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+	position:fixed;
+	z-index: 999;
+	/*ナビのスタート位置と形状*/
+	top:0;
+	right: -120%;
+	width:100%;
+	height: 100vh;/*ナビの高さ*/
+	background:rgba(176,191,176,.9);
+	/*動き*/
+	transition: all 0.6s;
+}
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+    right: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+    /*ナビの数が増えた場合縦スクロール*/
+    position: fixed;
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;/*表示する高さ*/
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+.gnav ul {
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:20%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+#g-nav li{
+  list-style: none;
+    text-align: center;
+}
+
+#g-nav li a{
+  color: #fff;
+  text-decoration: none;
+  padding:50px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+	
+.gnavi li span{
+	font-size: 21px;
+	border-bottom: #fff solid 2px;
+	}	
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+  position:fixed;
+    z-index: 9999;/*ボタンを最前面に*/
+  top:10px;
+  right: 10px;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+  
+/*×に変化*/  
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 10%;
+    height: 3%;
+    border-radius: 2px;
+  background-color: #666;
+    width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 60%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 60%;
+}
+
+/*ホットペッパー*/
+	.reserve,
+	.tel {
+		display: none;
+		position: absolute;
+	}
+	
+	.hotPeper{
+		align-items: flex-start;
+		left: 0;
+	}
+	
+/* ヘッダーキャッチコピー */
+	.line {
+		font-size: 1rem;
+	}
+	
+	.post {
+		flex-direction: column;
+		margin-bottom: 100px;
+	}
+	
+	.post:nth-child(3){
+		flex-direction: column;
+		margin-bottom: 100px;
+	}
+	
+	
+	h2{
+		padding-top: 50px;
+		padding-bottom: 50px;
+		font-size: 3rem;
+	}
+	
+	#news h2 {
+		padding-top: 0px;
+	}
+
+/*	ニュース*/
+	.event {
+		flex-direction: column;
+		justify-content: center;
+		gap:10px;
+	}
+	
+	/*バナー*/
+	.bannerList{
+		
+		align-items: center;
+		gap:30px;
+		margin-bottom: 53px;
+	}
+	
+
+	
+	 p {
+		line-height: 2rem;
+	}
+	.detail {
+		margin: 0;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width:400px){
+	.bannerList {
+		flex-direction: column;
+	}
+}
+
